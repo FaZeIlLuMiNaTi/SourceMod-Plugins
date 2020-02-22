@@ -19,7 +19,7 @@ public OnPluginStart()
 public SpawnEvent(Handle:event, const String:name[], bool:dontBroadcast)
 {
 	new client = GetClientOfUserId( GetEventInt( event, "userid" ));
-	if ( IsValidClient( client ))
+	if (IsValidClient(client))
 	{
 		GivePlayerItem(client, "item_nvgs"); //When the player spawns, give them Night Vision goggles
 	}
@@ -33,7 +33,7 @@ public Action:NightVision(client, const String:command[], args)
 
 stock bool IsValidClient(int client)
 {
-	if(client <= 0 ) return false;
+	if(client <= 0) return false;
 	if(client > MaxClients) return false;
 	if(!IsClientConnected(client)) return false;
 	return IsClientInGame(client);
