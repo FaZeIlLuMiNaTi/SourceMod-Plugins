@@ -4,8 +4,8 @@
 #include <sdktools>
 #include <sdkhooks>
 
-//Plugin information
-public Plugin:myinfo = 
+// Plugin information
+public Plugin:myinfo =
 {
 	name = "ecksdee",
 	author = "FaZe IlLuMiNaTi",
@@ -53,39 +53,39 @@ Commands, CVARs and Hooks are defined here */
 public OnPluginStart()
 {
 	// Admin Commands - Only admins can run these commands
-	RegAdminCmd("sm_warmup", StartWarmup, ADMFLAG_SLAY, "Starting Warmup"); //!warmup
-	RegAdminCmd("sm_knife", StartKnife, ADMFLAG_SLAY, "Starting Knife Round"); //!knife
-	RegAdminCmd("sm_start", StartGame, ADMFLAG_SLAY, "Starting Game"); //!start
-	RegAdminCmd("sm_play", StartGame, ADMFLAG_SLAY, "Starting Game"); //!play
-	RegAdminCmd("sm_scramble", Scramble, ADMFLAG_SLAY, "Scrambling Teams"); //!scramble
-	RegAdminCmd("sm_swap", Swap, ADMFLAG_SLAY, "Swapping Teams"); //!swap
-	RegAdminCmd("sm_switch", Swap, ADMFLAG_SLAY, "Swapping Teams"); //!switch
-	RegAdminCmd("sm_pause", PauseGame, ADMFLAG_SLAY, "Pausing Game"); //!pause
-	RegAdminCmd("sm_unpause", UnPauseGame, ADMFLAG_SLAY, "Unpausing Game"); //!unpause
-	RegAdminCmd("sm_reload", Reload, ADMFLAG_SLAY, "Reloading Plugin"); //!reload
-	RegAdminCmd("sm_clearchat", ClearChat, ADMFLAG_SLAY, "Clearing Chat"); //!clearchat
-	RegAdminCmd("sm_ccg", ClearChat, ADMFLAG_SLAY, "Clear Global Chat"); //!ccg
-	RegAdminCmd("sm_cc", ClearChat, ADMFLAG_SLAY, "Clear Global Chat"); //!cc
-	RegAdminCmd("sm_enablenoclip", ToggleNoClipOn, ADMFLAG_SLAY, "NoClip Enable"); //!enablenoclip
-	RegAdminCmd("sm_disablenoclip", ToggleNoClipOff, ADMFLAG_SLAY, "NoClip Disable"); //!disablenoclip
-	RegAdminCmd("sm_bhop", Bhop, ADMFLAG_SLAY, "Enable Bhopping") //!bhop
-	RegAdminCmd("sm_enablegod", ToggleGodModeOn, ADMFLAG_SLAY, "Enable God") //!bhop
-	RegAdminCmd("sm_disablegod", ToggleGodModeOff, ADMFLAG_SLAY, "Disable God") //!bhop
-	RegAdminCmd("sm_reset", ResetCFG, ADMFLAG_SLAY, "Reset") //!reset
-	//RegAdminCmd("sm_hopping", AutoHopper, ADMFLAG_SLAY, "hop") //!hopping
+	RegAdminCmd("sm_warmup", StartWarmup, ADMFLAG_SLAY, "Starting Warmup"); // !warmup
+	RegAdminCmd("sm_knife", StartKnife, ADMFLAG_SLAY, "Starting Knife Round"); // !knife
+	RegAdminCmd("sm_start", StartGame, ADMFLAG_SLAY, "Starting Game"); // !start
+	RegAdminCmd("sm_play", StartGame, ADMFLAG_SLAY, "Starting Game"); // !play
+	RegAdminCmd("sm_scramble", Scramble, ADMFLAG_SLAY, "Scrambling Teams"); // !scramble
+	RegAdminCmd("sm_swap", Swap, ADMFLAG_SLAY, "Swapping Teams"); // !swap
+	RegAdminCmd("sm_switch", Swap, ADMFLAG_SLAY, "Swapping Teams"); // !switch
+	RegAdminCmd("sm_pause", PauseGame, ADMFLAG_SLAY, "Pausing Game"); // !pause
+	RegAdminCmd("sm_unpause", UnPauseGame, ADMFLAG_SLAY, "Unpausing Game"); // !unpause
+	RegAdminCmd("sm_reload", Reload, ADMFLAG_SLAY, "Reloading Plugin"); // !reload
+	RegAdminCmd("sm_clearchat", ClearChat, ADMFLAG_SLAY, "Clearing Chat"); // !clearchat
+	RegAdminCmd("sm_ccg", ClearChat, ADMFLAG_SLAY, "Clear Global Chat"); // !ccg
+	RegAdminCmd("sm_cc", ClearChat, ADMFLAG_SLAY, "Clear Global Chat"); // !cc
+	RegAdminCmd("sm_enablenoclip", ToggleNoClipOn, ADMFLAG_SLAY, "NoClip Enable"); // !enablenoclip
+	RegAdminCmd("sm_disablenoclip", ToggleNoClipOff, ADMFLAG_SLAY, "NoClip Disable"); // !disablenoclip
+	RegAdminCmd("sm_bhop", Bhop, ADMFLAG_SLAY, "Enable Bhopping") // !bhop
+	RegAdminCmd("sm_enablegod", ToggleGodModeOn, ADMFLAG_SLAY, "Enable God") // !enablegod
+	RegAdminCmd("sm_disablegod", ToggleGodModeOff, ADMFLAG_SLAY, "Disable God") // !disablegod
+	RegAdminCmd("sm_reset", ResetCFG, ADMFLAG_SLAY, "Reset") // !reset
+	//RegAdminCmd("sm_hopping", AutoHopper, ADMFLAG_SLAY, "hop") // !hopping
 
 	// Player Commands - Everyone can run these commands
-	RegConsoleCmd("sm_ws", EcksDee, "lol") //!ws
-	RegConsoleCmd("sm_noclip", ToggleNoClip, "Noclip"); //!noclip
-	RegConsoleCmd("sm_nc", ToggleNoClip, "Noclip"); //!nc
-	RegConsoleCmd("sm_autohop", AutoHop, "AutoHop") //!autohop
-	RegConsoleCmd("sm_autobhop", AutoHop, "AutoHop") //!autobhop
-	RegConsoleCmd("sm_god", GodMode, "Enable God Mode"); //!god
-	RegConsoleCmd("sm_help", PluginHelp, "Help") //!help
-	RegConsoleCmd("sm_colours", PrintColors, "Colours") //!colours
-	RegConsoleCmd("sm_colors", PrintColors, "Colors") //!colors
-	RegConsoleCmd("sm_ccl", ClearLocalChat, "Clear Local Chat") //!ccl
-	
+	RegConsoleCmd("sm_ws", EcksDee, "lol") // !ws
+	RegConsoleCmd("sm_noclip", ToggleNoClip, "Noclip"); // !noclip
+	RegConsoleCmd("sm_nc", ToggleNoClip, "Noclip"); // !nc
+	RegConsoleCmd("sm_autohop", AutoHop, "AutoHop") // !autohop
+	RegConsoleCmd("sm_autobhop", AutoHop, "AutoHop") //! autobhop
+	RegConsoleCmd("sm_god", GodMode, "Enable God Mode"); // !god
+	RegConsoleCmd("sm_help", PluginHelp, "Help") // !help
+	RegConsoleCmd("sm_colours", PrintColors, "Colours") // !colours
+	RegConsoleCmd("sm_colors", PrintColors, "Colors") // !colors
+	RegConsoleCmd("sm_ccl", ClearLocalChat, "Clear Local Chat") // !ccl
+
 	// Command Listeners and Hooks - Command listeners will handle pre-existing CS:GO console commands
 	AddCommandListener(NoKill, "kill");
 	AddCommandListener(Command_JoinTeam, "jointeam");
@@ -162,6 +162,7 @@ public Action:ResetCFG(client, args)
 	ServerCommand("exec gamemode_competitive")
 	CPrintToChatAll(">> {green}All settings reset to default")
 	ServerCommand("mp_restartgame 1")
+	return Plugin_Handled;
 }
 
 // Warmup
@@ -261,12 +262,11 @@ public Action:NoKill(int client, const char[] command, int argc)
 		return Plugin_Handled;
 	}
 	return Plugin_Continue;
-}  
+}
 
 // Suppress CVAR Changes
 public Action Event_ServerCvar(Event event, const char[] name, bool dontBroadcast)
-{
-	
+{	
 	event.BroadcastDisabled = true;
 	return Plugin_Continue;
 }
@@ -287,12 +287,11 @@ public Action:Command_JoinTeam(client, const String:command[], args)
 	}
 
 	return Plugin_Continue;
-}  
+}
 
 // Basic NoClip
 public Action:ToggleNoClip(client, args)
 {
-
 	if(GetConVarBool(g_noclip))
 	{
 		new MoveType:movetype = GetEntityMoveType(client);
@@ -393,7 +392,7 @@ public Action:Bhop(client, args)
 		CPrintToChatAll(">> {green}Bhop Enabled");
 		return Plugin_Handled;
 	}
-	else 
+	else
 	{
 		ServerCommand("sm_realbhop_enabled 0");
 		ServerCommand("sm_cvar sv_enablebunnyhopping 0");
@@ -406,14 +405,6 @@ public Action:Bhop(client, args)
 		return Plugin_Handled;
 	}
 }
-
-/*
-public Action:AutoHop(client, args)
-{
-	CPrintToChat(client, ">> {lightred}AutoHop is for noobs");
-	return Plugin_Handled;
-}
-*/
 
 public Action:EcksDee(client, args)
 {
@@ -457,7 +448,7 @@ public Action PreThink(int client)
 {
 	if(IsValidClient(client) && IsPlayerAlive(client) && g_autohopenabled[client])
 	{
-		SetEntPropFloat(client, Prop_Send, "m_flStamina", 0.0); 
+		SetEntPropFloat(client, Prop_Send, "m_flStamina", 0.0);
 	}
 }
 
@@ -473,7 +464,7 @@ public Action OnPlayerRunCmd(int client, int &buttons, int &impulse, float vel[3
 		if (IsPlayerAlive(client) && buttons & IN_JUMP) //Check if player is alive and is in pressing space
 			if(!(GetEntityMoveType(client) & MOVETYPE_LADDER) && !(GetEntityFlags(client) & FL_ONGROUND)) //Check if is not in ladder and is in air
 				if(waterCheck(client) < WATER_LIMIT)
-					buttons &= ~IN_JUMP; 
+					buttons &= ~IN_JUMP;
 	return Plugin_Continue;
 }
 
@@ -490,45 +481,12 @@ stock bool IsValidClient(int client)
 	return IsClientInGame(client);
 }
 
-/*
-
-Old, obsolete Bhop code
-
-//Enable Bhop
-public Action:Bhop(client, args)
-{
-	if(!g_bhopenabled[client])
-	{
-		ServerCommand("sm_realbhop_enabled 1");
-		ServerCommand("sm_cvar sv_enablebunnyhopping 1");
-		ServerCommand("sv_staminajumpcost 0");
-		ServerCommand("sv_staminalandcost 0");
-		ServerCommand("sv_airaccelerate 12000");
-		g_bhopenabled[client] = true;
-		CPrintToChatAll(">> {green}Bhop Enabled");
-		return Plugin_Handled;
-	}
-	else 
-	{
-		ServerCommand("sm_realbhop_enabled 0");
-		ServerCommand("sm_cvar sv_enablebunnyhopping 0");
-		ServerCommand("sv_staminajumpcost .080");
-		ServerCommand("sv_staminalandcost .050");
-		ServerCommand("sv_airaccelerate 12");
-		g_bhopenabled[client] = false;
-		CPrintToChat(client, ">> {darkred}Bhop Disabled");
-		return Plugin_Handled;
-	}
-}
-*/
-
 // Clear Global Chat
 public Action:ClearChat(client, args)
 {
 	for (int i = 1; i < 85; i++)
 	{
 		CPrintToChatAll("");
-		
 	}
 	return Plugin_Handled;
 }
