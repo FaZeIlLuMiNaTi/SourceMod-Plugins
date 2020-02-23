@@ -47,7 +47,6 @@ Handle hBhop;
 bool CSGO;
 int WATER_LIMIT;
 
-
 /* Everything in the following section is executed upon startup
 Commands, CVARs and Hooks are defined here */
 public OnPluginStart()
@@ -98,8 +97,6 @@ public OnPluginStart()
 	g_god = CreateConVar("sm_godmodeenable", "0", "Enable or disable god command", FCVAR_NOTIFY);
 	g_bhop = CreateConVar("sm_bhopenable", "0", "Enable or disable bhop", FCVAR_NOTIFY);
 
-
-	AutoExecConfig(true, "abnerbhop");
 	hBhop = CreateConVar("sm_autohopenable", "0", "Enable/disable Plugin", FCVAR_NOTIFY|FCVAR_REPLICATED);
  
 	char theFolder[40];
@@ -122,7 +119,6 @@ public OnClientDisconnect(client)
 	g_autohopenabled[client] = false;
 	g_ncenabled[client] = false;
 }
-
 
 // Help section
 public Action:PluginHelp(client, args)
@@ -228,7 +224,6 @@ public Action:PauseGame(client, args)
 	return Plugin_Handled;
 }
 
-
 // Unpause Game
 public Action:UnPauseGame(client, args)
 {
@@ -238,7 +233,6 @@ public Action:UnPauseGame(client, args)
 	return Plugin_Handled;
 }
 
-
 // Reload Plugin
 public Action:Reload(client, args)
 {
@@ -246,7 +240,6 @@ public Action:Reload(client, args)
 	CPrintToChat(client, ">> {lightred}ecksdee");
 	return Plugin_Handled;
 }
-
 
 // Disable "kill" command
 public Action:NoKill(int client, const char[] command, int argc)
@@ -382,8 +375,7 @@ public Action:Bhop(client, args)
 {
 	if(!GetConVarBool(g_bhop))
 	{
-		ServerCommand("sm_realbhop_enabled 1");
-		ServerCommand("sm_cvar sv_enablebunnyhopping 1");
+		ServerCommand("sv_enablebunnyhopping 1");
 		ServerCommand("sv_staminajumpcost 0");
 		ServerCommand("sv_staminalandcost 0");
 		ServerCommand("sv_airaccelerate 12000");
@@ -394,8 +386,7 @@ public Action:Bhop(client, args)
 	}
 	else
 	{
-		ServerCommand("sm_realbhop_enabled 0");
-		ServerCommand("sm_cvar sv_enablebunnyhopping 0");
+		ServerCommand("sv_enablebunnyhopping 0");
 		ServerCommand("sv_staminajumpcost .080");
 		ServerCommand("sv_staminalandcost .050");
 		ServerCommand("sv_airaccelerate 12");
@@ -440,8 +431,7 @@ public Action:AutoHop(client, args)
 
 public void OnClientPutInServer(int client)
 {
-	if(!CSGO) // To boost in CSGO use together https://forums.alliedmods.net/showthread.php?t=244387
-		SDKHook(client, SDKHook_PreThink, PreThink); //This make you fly in CSS;
+	SDKHook(client, SDKHook_PreThink, PreThink);
 }
 
 public Action PreThink(int client)
@@ -450,12 +440,6 @@ public Action PreThink(int client)
 	{
 		SetEntPropFloat(client, Prop_Send, "m_flStamina", 0.0);
 	}
-}
-
-stock void SetCvar(char[] scvar, char[] svalue)
-{
-	Handle cvar = FindConVar(scvar);
-	SetConVarString(cvar, svalue, true);
 }
 
 public Action OnPlayerRunCmd(int client, int &buttons, int &impulse, float vel[3], float angles[3], int &weapon)
